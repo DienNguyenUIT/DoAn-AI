@@ -6,6 +6,15 @@
 *.lo
 *.o
 *.obj
+*.pdb
+*.tlog
+*.log
+*.suo
+*.db
+*.ipch
+*.log
+*.idb
+*.ilk
 
 # Precompiled Headers
 *.gch
@@ -30,3 +39,4 @@
 *.exe
 *.out
 *.app
+
