@@ -6,6 +6,7 @@ using namespace std;
 inline void splashscreen()
 {
 	system("cls");
+	TextColor(12);
 	gotoxy(25, 4); Sleep(50);
 	cout << "  ####    ";
 	cout << "#####          "; 
@@ -41,9 +42,10 @@ inline void splashscreen()
 	cout << "###      ###  ";
 	cout << "###    ###    ";
 	cout << "#####";
+	TextColor(15);
 	gotoxy(45, 12); Sleep(50);
 	cout << "..........LOADING..........";
-	gotoxy(15, 26); Sleep(50);
+	gotoxy(15, 27); Sleep(50);
 	cout << "\t\tTHIS GAME WAS MADE BY : DANG HOANG MINH - NGUYEN THANH DIEN - VU GIA BAO.";
 	Sleep(1000);
 }
