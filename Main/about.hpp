@@ -1,4 +1,4 @@
-void about()
+﻿void about()
 {
 	system("cls");
 	gotoxy(15, 2);
@@ -18,3 +18,8 @@ void about()
 	gotoxy(10, 9);
 	cout << "\t    THANKS FOR PLAYING OUR GAME!! \n\n";
 }
+/*
+gotoxy(x,y) có tác dụng di chuyển vị trí con trỏ đến toa độ cột thứ x và hàng thứ y
+x nằm trong khoảng 1-> 80
+y nằm trong khoảng 1 -> 25
+*/

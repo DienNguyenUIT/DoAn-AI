@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include<Windows.h>
 #include<conio.h>
 #include<string>
@@ -16,19 +16,19 @@
 #include"escape.hpp"
 
 using namespace std;          
-char s[100][100];   // for creating playboard
-string playername1, playername2, playername;   // for entering playername in pvp vs pvc mode
-int winpvp1 = 0, winpvp2 = 0;  // for announce the current score in pvp mode
-int winpvc_player = 0, winpvc_com = 0; // for announce the current score in pvc mode
-char player1symbol = 'O', player2symbol ='X';
-int rule = 0; //default(0): blocked head ,  1 : non-blocked head
-int n = 20; // size of playboard
-int playturn; //  using in defining a draw game PVP MODE
-int playturnpvc;    // using in defining a draw game  PVC MODE
-int load =0; // load = 0 mean create new game 
-int gameplayed = 0;     // using in player statistic mode 
-int numofwingame = 0;   // using in player statistic mode
-void menu();
+char s[100][100];							   // tạo bàn cờ
+string playername1, playername2, playername;   // tên người chơi ở chế đọc pvp và pvc
+int winpvp1 = 0, winpvp2 = 0;				   // thông báo điểm hiện tại của 2 người chơi chế độ pvp
+int winpvc_player = 0, winpvc_com = 0;		   // thông báo điểm hiện tại của 2 người chơi chế độ pvc
+char player1symbol = 'O', player2symbol = 'X'; // kí hiệu của 2 người chơi
+int rule = 0;								   // mặc đinh(0): 2 đầu bị chặn ,  1 : k bị chăn
+int n = 20;									   // size of playboard
+int playturn;								   // định nghĩa 1 game hoà pvp
+int playturnpvc;							   // định nghĩa 1 game hoà PVC
+int load = 0;								   // load = 0 là tạo game mới
+int gameplayed = 0;							   // sử dụng để thống kê người chơi
+int numofwingame = 0;						   // sử dụng để thống kê người chơi
+void menu();								   // chọn chế độ chơi và các tuỳ chỉnh khác như thiết lập, exit, ..
 void pvp();
 void controlpvp(int&x, int&y);
 void controlpvc(int&x, int&y);
@@ -78,7 +78,7 @@ void menu()
 	char choose;
 	while (1) {
 		choose = _getch();
-		bool isOk = false;          // block wrong input
+		bool isOk = false;          // ngăn người dùng nhập sai
 		switch (choose)
 		{
 		   case '1':
@@ -558,6 +558,19 @@ void pvp()
 	 }
  }
 
+ /* Cho người chơi nhập vô  1 ký tự
+Chọn 1 - Thay đổi ký tự người chơi X - O thành cái tuỳ thích
+Chọn 2 - Thay đổi luật
+		 Chọn tiếp : 0 - chế độ chơi tính chặn 2 đầu
+					 1 - chế độ chơi không chặn 2 đầu
+Chọn 3 - Thay đổi bàn cờ
+		 Chọn tiếp : 1- kích thước bàn cờ nhở
+					2- kích thước bàn cờ trung bình
+					3- kích thước bàn cờ lớn
+
+ Other - thoát ra vào lại menu
+ */
+
  void settings()
  {
 	 system("cls");
@@ -598,6 +611,10 @@ void pvp()
 		 cin >> player2symbol;
 		 cin.clear();
 		 cin.ignore(1000, '\n');
+
+		// Nếu ký tự cờ của 2 người chơi giống nhau hoặc là chọn chữ 'p' --> cho nhập lại đến khi đúng thì thôi
+		// Vì chữ 'p' là phím để đánh cờ
+
 		 while (player1symbol == player2symbol || player1symbol == 'p' || player2symbol == 'p')
 		 {
 			 gotoxy(20, 15);
@@ -678,6 +695,8 @@ void pvp()
 	 settings();
  }
 
+// Lưu game vào file savedgamepvp.txt trong thư mục save có sẵn
+
  int savegamepvp()
  { 
 	 string tengamemoi;
@@ -700,15 +719,15 @@ void pvp()
 		 system("pause");
 		 return 1;
 	 }
-	 while (inputfile_gamename.eof() == false)
+	 while (inputfile_gamename.eof() == false)	// chưa đến kí tự kết thúc file thì duyệt tiếp
 	 {
 		 getline(inputfile_gamename,savedgame);
 	 }
 	 inputfile_gamename.close();
 
-	 while (savedgame.find(tengamemoi)!= string::npos )
+	 while (savedgame.find(tengamemoi)!= string::npos )	// Nếu tên file tồn tại rồi thì bắt nhập lại
 	{
-		 system("cls");
+		 system("cls");	// lệnh xoá màn hình đưa con trỏ chuột về góc trên bên trái
 		 gotoxy(30, 4);
 		 cout << "THIS FILE HAS ALREADY EXIST PLEASE ENTER ANOTHER NAME:";
 		 getline(cin, tengamemoi);

@@ -4,7 +4,7 @@
 
 using namespace std;
 
- // can phai xet 7 con lien tiep de chac chan la ko bi chan 2 dau
+// can phai xet 7 con lien tiep de chac chan la ko bi chan 2 dau
 void Findmove(char s[100][100], int&x, int&y, int&a, int&b, char player1symbol, char player2symbol, int rule, int n, int playturnpvc);
 int find_4_enermy(char s[100][100], int i, int j, int n, char player1symbol, char player2symbol);
 int find_4_enermy_vertical(char s[100][100], int i, int j, char player1symbol, char player2symbol);
