@@ -31,12 +31,13 @@ inline void drawplayboard(char s[100][100], int n, char player1symbol, char play
 		cout << j;
 		if (j < 10)
 		{
-			cout << " "; Sleep(5);
+			cout << " "; 
 			for (int i = 0; i < n + 2; i++) 
 			{
 				if (s[i][j] == player1symbol) TextColor(12);
 				else if (s[i][j] == player2symbol)TextColor(11);
 				cout << s[i][j] << "  ";
+				Sleep(5);
 				TextColor(15);
 			}
 		}
