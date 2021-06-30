@@ -1,4 +1,4 @@
-# DoAn-AI
+# Gokumo Minigame
 Game Gokumo
 
 Sử dụng giao diện cmd để thao tác:
